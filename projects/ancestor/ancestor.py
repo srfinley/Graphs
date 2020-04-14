@@ -16,14 +16,13 @@ class Queue():
 def bft(linkages, starting_node):
     # ancestors is guaranteed acyclic, so no need for visited
     q = Queue()
-    q.enqueue([starting_node])
+    q.enqueue(starting_node)
     final_path = []
     while q.size() > 0:
-        path = q.dequeue()
-        final_path.append(path[-1])
-        for next_vert in linkages[path[-1]]:
-            new_path = path + [next_vert]
-            q.enqueue(new_path)
+        node = q.dequeue()
+        final_path.append(node)
+        for next_vert in linkages[node]:
+            q.enqueue(next_vert)
     return final_path
 
 def earliest_ancestor(ancestors, starting_node):
