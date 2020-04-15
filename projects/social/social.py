@@ -77,6 +77,7 @@ class SocialGraph:
             friendship = possible_friendships[i]
             self.add_friendship(friendship[0], friendship[1])
 
+
     def get_all_social_paths(self, user_id):
         """
         Takes a user's user_id as an argument
@@ -103,7 +104,25 @@ class SocialGraph:
 
 if __name__ == '__main__':
     sg = SocialGraph()
-    sg.populate_graph(10, 2)
-    print(sg.friendships)
-    connections = sg.get_all_social_paths(1)
-    print(connections)
+    sg.populate_graph(1000, 5)
+    # print(sg.friendships)
+    # percentage of users in a particular user's extended social network?
+    extended_network_size = []
+    # average degree of separation between a user and those in extended network?
+    avg_network_length = []
+    for i in range(1, 1001):
+        connections = sg.get_all_social_paths(i)
+        extended_network_size.append(len(connections))
+        my_lengths = []
+        for j in connections:
+            my_lengths.append(len(connections[j]))
+        my_average = sum(my_lengths) / len(my_lengths)
+        avg_network_length.append(my_average)
+
+    print("average percentage of users in a particular user's extended social network:")
+    ENS_avg = sum(extended_network_size) / len(extended_network_size)
+    ENS_percent = ENS_avg / 1000
+    print(ENS_percent, "\n")
+    print("average degree of separation between a user and those in extended network")
+    ANL_avg = sum(avg_network_length) / len(avg_network_length)
+    print(ANL_avg)
