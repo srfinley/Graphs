@@ -77,6 +77,18 @@ class SocialGraph:
             friendship = possible_friendships[i]
             self.add_friendship(friendship[0], friendship[1])
 
+            # alternate friendship generation:
+            # trades guaranteed O(n^2) for veeeery small chance of infinite loop
+            # produces essentially the same stats below as standard algo
+
+            # friend1 = random.randint(1, num_users)
+            # friend2 = random.randint(1, num_users)
+            # while friend1 in self.friendships[friend2] or friend1 == friend2:
+            #     friend1 = random.randint(0, num_users-1)
+            #     friend2 = random.randint(0, num_users-1)
+            # self.add_friendship(friend1, friend2)
+            
+
 
     def get_all_social_paths(self, user_id):
         """

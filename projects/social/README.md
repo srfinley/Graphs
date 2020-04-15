@@ -54,7 +54,7 @@ Each call increases the average twice as much as expected, since both users gain
 
 2. If you create 1000 users with an average of 5 random friends each, what percentage of other users will be in a particular user's extended social network? What is the average degree of separation between a user and those in his/her extended network?
 
-98.8% and 5.4, determined programatically. The latter may be off by one in some accountings, since each path includes both the starting and ending friends.
+98.8% and 5.4, determined programatically.
 
 
 
